@@ -1,0 +1,35 @@
+<app-not-found
+  [visible]="!book"
+  notFoundMessage="Nothing Found!"
+  resetLinkText="Go To Homepage!!!"
+></app-not-found>
+<div *ngIf="book" class="container">
+  <img [src]="book.imageUrl" [alt]="book.title" />
+  <div class="details">
+    <div class="header">
+      <span class="name">{{ book.title }}</span>
+    </div>
+
+    <div class="author">
+      {{ book.author }}
+    </div>
+
+    <!-- <div class="origins">
+      <span *ngFor="let origin of food.origins">
+        {{ origin }}
+      </span>
+    </div> -->
+
+    <div class="subject">
+      <span class="subjects">{{ book.subject }}</span>
+    </div>
+
+    <div class="tags">
+      <a *ngFor="let tag of book.tags" routerLink="/tag/{{ tag }}">
+        {{ tag }}
+      </a>
+    </div>
+
+    <button (click)="addToBorrow()">Add to Borrow</button>
+  </div>
+</div>

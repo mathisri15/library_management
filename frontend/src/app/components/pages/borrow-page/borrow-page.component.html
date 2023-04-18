@@ -1,0 +1,53 @@
+<app-title title="Borrow Page" margin="1rem 0 1rem 0.2rem"></app-title>
+<app-not-found
+  [visible]="!borrow || !borrow.items.length"
+  notFoundMessage="Nothing Found!"
+  resetLinkText="Go To Homepage!!!"
+>
+</app-not-found>
+
+<div class="container">
+  <ul>
+    <li *ngFor="let borrowItem of borrow.items">
+      <div>
+        <img [src]="borrowItem.book.imageUrl" [alt]="borrowItem.book.title" />
+      </div>
+      <div>
+        <a routerLink="/book/{{ borrowItem.book.id }}">{{
+          borrowItem.book.title
+        }}</a>
+      </div>
+      <div>
+        <select
+          #quantitySelect
+          [value]="borrowItem.quantity"
+          (change)="changeQuantity(borrowItem, quantitySelect.value)"
+        >
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <!--//quantityselect is a reference name -->
+      </div>
+      <div>
+        {{ borrowItem.price | currency }}
+      </div>
+
+      <div>
+        <button class="remove-button" (click)="removeFromBorrow(borrowItem)">
+          Remove
+        </button>
+      </div>
+    </li>
+  </ul>
+
+  <div *ngIf="borrow && borrow.items.length" class="check-out">
+    <div>
+      <div class="books-count">{{ borrow.totalCount }}</div>
+      <div class="total-price">{{ borrow.totalPrice | currency }}</div>
+    </div>
+    <a routerLink="/checkout">Proceed to Borrow</a>
+  </div>
+</div>

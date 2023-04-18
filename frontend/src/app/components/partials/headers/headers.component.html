@@ -1,0 +1,25 @@
+<header>
+  <div class="container">
+    <a routerLink="/" class="logo">Library Management!</a>
+    <nav>
+      <ul>
+        <li *ngIf="!user.token">
+          <a routerLink="/login-page">Login</a>
+        </li>
+        <li *ngIf="user.token" class="menu-container">
+          <a routerLink="/dashboard">{{ user.name }}</a>
+          <div class="menu">
+            <a routerLink="/profile">profile</a>
+            <a routerLink="/order">Orders</a>
+            <a (click)="logout()">logout</a>
+          </div>
+        </li>
+        <li>
+          <a routerLink="/borrow-page"
+            >Borrow <span *ngIf="borrowQuantity">{{ borrowQuantity }} </span></a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

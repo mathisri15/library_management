@@ -65,13 +65,13 @@ border-radius: 1rem;
 
 }
 
-.page /deep/ .ngx-pagination a, .ngx-pagination button:focus {
+.page .ngx-pagination a, .ngx-pagination button:focus {
   outline: none !important;
   color: #e72929 !important;
 
 }
 
-.page /deep/ .ngx-pagination .current, .ngx-pagination li :focus{
+.page .ngx-pagination .current, .ngx-pagination li :focus{
   background-color: #e72929;
   color: #e0e0e0;
   outline: none;
